@@ -478,6 +478,29 @@ public class NBMWebRTCPeer{
     }
 
     /**
+     * remove stream
+     * @param stream
+     */
+    public void removeStream(MediaStream stream) {
+        this.mediaResourceManager.removeStream(stream);
+    }
+
+    /**
+     * @return video enabled
+     */
+    public boolean isLocalMediaEnabled(){
+        return this.mediaResourceManager.getLocalMediaEnabled();
+    }
+
+    /**
+     * set local video enabled
+     * @param enabled
+     */
+    public void enableLocalVideo(boolean enabled){
+        mediaResourceManager.setLocalVideoEnabled(enabled);
+    }
+
+    /**
      * Closes specific connection
      * @param connectionId A unique identifier for the connection
      */

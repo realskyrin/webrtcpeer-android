@@ -102,6 +102,7 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
     private MediaConstraints sdpMediaConstraints;
     private boolean videoCallEnabled;
     private boolean renderVideo;
+    private boolean isLocalMediaEnabled;
     private boolean videoSourceStopped;
     private MediaStream localMediaStream;
     private VideoSource videoSource;
@@ -122,6 +123,7 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
         this.executor = executor;
         this.factory = factory;
         renderVideo = true;
+        isLocalMediaEnabled = true;
         remoteVideoTracks = new HashMap<>();
         remoteVideoRenderers = new HashMap<>();
         remoteVideoMediaStreams = new HashMap<>();
@@ -287,6 +289,10 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
         executor.execute(new AttachRendererTask(remoteRender, remoteStream));
     }
 
+    void removeStream(MediaStream stream) {
+        this.remoteVideoTracks.clear();
+    }
+
     void createLocalMediaStream(Object renderEGLContext,final VideoRenderer.Callbacks localRender) {
         if (factory == null) {
             Log.e(TAG, "Peerconnection factory is not created");
@@ -392,6 +398,15 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
 
     boolean getVideoEnabled(){
         return renderVideo;
+    }
+
+    boolean getLocalMediaEnabled(){
+        return isLocalMediaEnabled;
+    }
+
+    void setLocalVideoEnabled(boolean enabled){
+        isLocalMediaEnabled = enabled;
+        localVideoTrack.setEnabled(enabled);
     }
 
     boolean hasCameraPosition(NBMMediaConfiguration.NBMCameraPosition position){
