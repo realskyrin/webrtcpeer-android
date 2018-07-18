@@ -19,6 +19,8 @@ package fi.vtt.nubomedia.webrtcpeerandroid;
 
 import android.util.Log;
 import org.webrtc.CameraEnumerationAndroid;
+import org.webrtc.Camera2Enumerator;
+import org.webrtc.CameraEnumerator;
 import org.webrtc.DataChannel;
 import org.webrtc.IceCandidate;
 import org.webrtc.Logging;
@@ -128,6 +130,11 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
         remoteVideoRenderers = new HashMap<>();
         remoteVideoMediaStreams = new HashMap<>();
         videoCallEnabled = peerConnectionParameters.videoCallEnabled;
+    }
+
+    void Test(){
+//        org.webrtc.Camera2Enumerator camera2Enumerator = new Camera2Enumerator();
+//        org.webrtc.CameraEnumerator cameraEnumerator = new CameraEnumerator();
     }
 
     void createMediaConstraints() {
