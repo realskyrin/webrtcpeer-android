@@ -477,6 +477,10 @@ public class NBMWebRTCPeer{
         }
     }
 
+    public boolean isPCRMNull(){
+        return peerConnectionResourceManager == null;
+    }
+
     /**
      * remove stream
      * @param stream
