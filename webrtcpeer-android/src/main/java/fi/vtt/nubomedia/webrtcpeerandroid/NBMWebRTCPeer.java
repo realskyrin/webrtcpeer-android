@@ -481,6 +481,16 @@ public class NBMWebRTCPeer {
     }
 
     /**
+     * @return true if localMediaStream is null
+     */
+    public boolean isLocalMediaStreamNull(){
+        if (mediaResourceManager==null){
+            return true;
+        }
+        return mediaResourceManager.getLocalMediaStream() == null;
+    }
+
+    /**
      * peerConnectionResourceManager 是否为空
      * @return
      */

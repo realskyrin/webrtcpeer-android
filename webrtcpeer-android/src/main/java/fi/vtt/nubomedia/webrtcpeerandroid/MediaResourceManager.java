@@ -260,6 +260,7 @@ final class MediaResourceManager implements NBMWebRTCPeer.Observer {
             this.remoteRender = remoteRender;
             this.remoteStream = remoteStream;
         }
+        @Override
         public void run() {
             Log.d(TAG, "Attaching VideoRenderer to remote stream (" + remoteStream + ")");
 
